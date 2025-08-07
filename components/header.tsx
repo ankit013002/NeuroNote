@@ -5,18 +5,18 @@ import {
   useUser,
   SignedOut,
   SignInButton,
-  SignOutButton,
+  UserButton,
 } from "@clerk/nextjs";
 
-const header = () => {
+const Header = () => {
   const { user } = useUser();
 
   return (
-    <div>
+    <div className="flex justify-between p-5 items-center">
       {user && (
-        <h1>
+        <h1 className="text-2xl">
           {user?.firstName}
-          {"'s"}
+          {"'s "}
           Space
         </h1>
       )}
@@ -26,11 +26,11 @@ const header = () => {
           <SignInButton />
         </SignedOut>
         <SignedIn>
-          <SignOutButton />
+          <UserButton />
         </SignedIn>
       </div>
     </div>
   );
 };
 
-export default header;
+export default Header;
